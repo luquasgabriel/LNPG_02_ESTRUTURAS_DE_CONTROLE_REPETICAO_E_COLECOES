@@ -2,57 +2,57 @@
 #include <string.h>
 
 typedef struct {
-    char possui_rg[20];
-    char data_nasc_rg[11];
-    char possui_passagem[20];
-    char data_nasc_passagem[11];
-    char assento[4];
-} Passageiro;
+    char has_rg[20];
+    char birthdate_rg[11];
+    char has_boarding_pass[20];
+    char birthdate_boarding_pass[11];
+    char seat[4];
+} Passenger;
 
-void verificar_passageiros(int qtd_passageiros) {
-    Passageiro passageiros[qtd_passageiros];
+void check_passengers(int num_passengers) {
+    Passenger passengers[num_passengers];
 
-    for (int i = 0; i < qtd_passageiros; ++i) {
-        printf("Possui RG? Digite 'RG' se sim ou 'Nao possui' se nao: ");
-        scanf("%s", passageiros[i].possui_rg);
+    for (int i = 0; i < num_passengers; ++i) {
+        printf("Do you have a RG? Type 'Yes' if you do or 'No' if you don't: ");
+        scanf("%s", passengers[i].has_rg);
 
-        if (strcmp(passageiros[i].possui_rg, "Nao possui") == 0) {
-            printf("A saída é nessa direção\n");
+        if (strcmp(passengers[i].has_rg, "No") == 0) {
+            printf("The exit is in that direction\n");
             continue;
         }
 
-        printf("Digite a data de nascimento (formato DD/MM/AAAA): ");
-        scanf("%s", passageiros[i].data_nasc_rg);
+        printf("Enter the birthdate (format DD/MM/YYYY): ");
+        scanf("%s", passengers[i].birthdate_rg);
 
-        printf("Possui Passagem? Digite 'Passagem' se sim ou 'Nao possui' se nao: ");
-        scanf("%s", passageiros[i].possui_passagem);
+        printf("Do you have a boarding pass? Type 'Yes' if you do or 'No' if you don't: ");
+        scanf("%s", passengers[i].has_boarding_pass);
 
-        if (strcmp(passageiros[i].possui_passagem, "Nao possui") == 0) {
-            printf("A recepção é nessa direção\n");
+        if (strcmp(passengers[i].has_boarding_pass, "No") == 0) {
+            printf("The reception is in that direction\n");
             continue;
         }
 
-        printf("Digite a data de nascimento na passagem (formato DD/MM/AAAA): ");
-        scanf("%s", passageiros[i].data_nasc_passagem);
+        printf("Enter the birthdate on the boarding pass (format DD/MM/YYYY): ");
+        scanf("%s", passengers[i].birthdate_boarding_pass);
 
-        if (strcmp(passageiros[i].data_nasc_rg, passageiros[i].data_nasc_passagem) != 0) {
-            printf("190 - Chamar a polícia!\n");
+        if (strcmp(passengers[i].birthdate_rg, passengers[i].birthdate_boarding_pass) != 0) {
+            printf("190\n");
             continue;
         }
 
-        printf("Digite o número do assento (formato A12): ");
-        scanf("%s", passageiros[i].assento);
-        printf("O seu assento é %s, tenha uma excelente viagem!\n", passageiros[i].assento);
+        printf("Enter the seat number (format A12): ");
+        scanf("%s", passengers[i].seat);
+        printf("Your seat is %s, have an excellent trip!\n", passengers[i].seat);
     }
 }
 
 int main() {
-    int quantidade_passageiros;
+    int num_passengers;
 
-    printf("Digite a quantidade de passageiros: ");
-    scanf("%d", &quantidade_passageiros);
+    printf("Enter the number of passengers: ");
+    scanf("%d", &num_passengers);
 
-    verificar_passageiros(quantidade_passageiros);
+    check_passengers(num_passengers);
 
     return 0;
 }
