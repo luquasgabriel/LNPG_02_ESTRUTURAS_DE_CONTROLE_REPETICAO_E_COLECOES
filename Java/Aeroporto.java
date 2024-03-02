@@ -1,62 +1,62 @@
 import java.util.Scanner;
 
-public class Aeroporto {
+public class Airport {
 
-    static class Passageiro {
-        String possuiRg;
-        String dataNascRg;
-        String possuiPassagem;
-        String dataNascPassagem;
-        String assento;
+    static class Passenger {
+        String hasRG;
+        String birthDateRG;
+        String hasTicket;
+        String birthDateTicket;
+        String seat;
     }
 
-    public static void verificar(int qtdPassageiros) {
-        Passageiro[] passageiros = new Passageiro[qtdPassageiros];
+    public static void check(int numPassengers) {
+        Passenger[] passengers = new Passenger[numPassengers];
 
         try (Scanner scanner = new Scanner(System.in)) {
-            for (int i = 0; i < qtdPassageiros; ++i) {
-                passageiros[i] = new Passageiro();
+            for (int i = 0; i < numPassengers; ++i) {
+                passengers[i] = new Passenger();
 
-                System.out.print("Possui RG? Digite 'RG' se sim ou 'Nao possui' se nao: ");
-                passageiros[i].possuiRg = scanner.next();
+                System.out.print("Do you have an RG? Type 'RG' if yes or 'No RG' if not: ");
+                passengers[i].hasRG = scanner.next();
 
-                if ("Nao possui".equals(passageiros[i].possuiRg)) {
-                    System.out.println("A saída é nessa direção");
+                if ("No RG".equals(passengers[i].hasRG)) {
+                    System.out.println("Head towards the exit.");
                     continue;
                 }
 
-                System.out.print("Digite a data de nascimento (formato DD/MM/AAAA): ");
-                passageiros[i].dataNascRg = scanner.next();
+                System.out.print("Enter the birth date on the RG (format DD/MM/YYYY): ");
+                passengers[i].birthDateRG = scanner.next();
 
-                System.out.print("Possui Passagem? Digite 'Passagem' se sim ou 'Nao possui' se nao: ");
-                passageiros[i].possuiPassagem = scanner.next();
+                System.out.print("Do you have a ticket? Type 'Ticket' if yes or 'No Ticket' if not: ");
+                passengers[i].hasTicket = scanner.next();
 
-                if ("Nao possui".equals(passageiros[i].possuiPassagem)) {
-                    System.out.println("A recepção é nessa direção");
+                if ("No Ticket".equals(passengers[i].hasTicket)) {
+                    System.out.println("Head to the reception.");
                     continue;
                 }
 
-                System.out.print("Digite a data de nascimento na passagem (formato DD/MM/AAAA): ");
-                passageiros[i].dataNascPassagem = scanner.next();
+                System.out.print("Enter the birth date on the ticket (format DD/MM/YYYY): ");
+                passengers[i].birthDateTicket = scanner.next();
 
-                if (!passageiros[i].dataNascRg.equals(passageiros[i].dataNascPassagem)) {
-                    System.out.println("190 - Chamar a polícia!");
+                if (!passengers[i].birthDateRG.equals(passengers[i].birthDateTicket)) {
+                    System.out.println("190");
                     continue;
                 }
 
-                System.out.print("Digite o número do assento (formato A12): ");
-                passageiros[i].assento = scanner.next();
-                System.out.println("O seu assento é " + passageiros[i].assento + ", tenha uma excelente viagem!");
+                System.out.print("Enter the seat number (format A12): ");
+                passengers[i].seat = scanner.next();
+                System.out.println("Your seat is " + passengers[i].seat + ", have an excellent trip!");
             }
         }
     }
 
     public static void main(String[] args) {
         try (Scanner scanner = new Scanner(System.in)) {
-            System.out.print("Digite a quantidade de passageiros: ");
-            int quantidadePassageiros = scanner.nextInt();
+            System.out.print("Enter the number of passengers: ");
+            int numPassengers = scanner.nextInt();
 
-            verificar(quantidadePassageiros);
+            check(numPassengers);
         }
     }
 }
